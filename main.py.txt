@@ -1,0 +1,38 @@
+def finansal_analiz(): print("========================================") print(" KISISEL BUTCE VE FINANSAL ANALIZ ") print("========================================")
+
+try:
+    # Kullanicidan verileri aliyoruz
+    gelir = float(input("Aylik toplam gelirini gir ($ veya TL): "))
+    gider = float(input("Aylik toplam masrafini gir ($ veya TL): "))
+    
+    if gelir < 0 or gider < 0:
+        print("Hata: Negatif deger giremezsin!")
+        return
+    # Hesaplamalar
+    kalan = gelir - gider
+    harcama_orani = (gider / gelir) * 100 if gelir > 0 else 0
+    print("\n----------------------------------------")
+    print("             ANALIZ SONUCLARI           ")
+    print("----------------------------------------")
+    print(f"Toplam Gelir   : {gelir:,.2f}")
+    print(f"Toplam Masraf  : {gider:,.2f}")
+    print(f"Net Birikim    : {kalan:,.2f}")
+    print(f"Harcama Orani  : %{harcama_orani:.1f}")
+    # Finansal Durum Degerlendirmesi
+    print("\n--- Finansal Tavsiye & Durum ---")
+    if kalan > 0:
+        print("Tebrikler! Bu ay butcede arti kardasin.")
+        if harcama_orani < 50:
+            print("Harika tasarruf orani! Gelirinin yarisindan azini harciyorsun.")
+        else:
+            print("İyi durumdasın ama harcama oranini bir tik dusurmek gelecekte yardimci olur.")
+    elif kalan == 0:
+        print("Gef-bese sifir! Para tam bas basa gitmis, biraz tasarruf sart.")
+    else:
+        print("Dikkat! Masraflarin gelirini gecmis, eksidesin (butce acigi).")
+        
+    print("========================================")
+except ValueError:
+    print("Lutfen gecerli bir sayi gir!")
+
+if name == "main": finansal_analiz()
